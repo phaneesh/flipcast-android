@@ -25,7 +25,7 @@ repositories {
 Add the dependency
 
 ```
-compile 'com.flipkart.flipcast:flipcast-android:1.0-SNAPSHOT'
+compile 'com.flipkart.flipcast:flipcast-android:1.0'
 ```
 
 ### Sample code
