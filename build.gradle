@@ -1,0 +1,74 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0-beta3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.flipkart.flipcast'
+version = '1.0-SNAPSHOT'
+
+android {
+    compileSdkVersion 'android-19'
+    buildToolsVersion '24.0.0 rc2'
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 23
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:23.3.0'
+    provided "org.projectlombok:lombok:1.16.8"
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'flipcast-android'
+
+    publishedGroupId = 'com.flipkart.flipcast'
+    libraryName = 'Flipcast'
+    artifact = 'flipcast-android'
+
+    libraryDescription = 'A easy to use android client for flipcast'
+
+    siteUrl = 'https://github.com/phaneesh/flipcast-android'
+    gitUrl = 'https://github.com/phaneesh/flipcast-android.git'
+
+    libraryVersion = '1.0-SNAPSHOT'
+
+    developerId = 'phaneesh'
+    developerName = 'Phaneesh Nagaraja'
+    developerEmail = 'phaneesh.n@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
