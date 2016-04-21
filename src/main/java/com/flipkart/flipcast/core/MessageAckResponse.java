@@ -29,24 +29,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(suppressConstructorProperties = true)
 @NoArgsConstructor
 @Builder
-public class DeviceData {
+public class MessageAckResponse {
 
-    private String configName;
-
-    private String deviceId;
-
-    private String cloudMessagingId;
-
-    private String osName = "ANDROID";
-
-    private String osVersion;
-
-    private String brand;
-
-    private String model;
-
-    private String appName;
-
-    private String appVersion;
-
+    private String messageId;
 }

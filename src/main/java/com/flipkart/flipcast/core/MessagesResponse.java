@@ -17,10 +17,13 @@
 
 package com.flipkart.flipcast.core;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Singular;
 
 /**
  * @author phaneesh
@@ -29,24 +32,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(suppressConstructorProperties = true)
 @NoArgsConstructor
 @Builder
-public class DeviceData {
+public class MessagesResponse {
 
-    private String configName;
+    private long count;
 
-    private String deviceId;
-
-    private String cloudMessagingId;
-
-    private String osName = "ANDROID";
-
-    private String osVersion;
-
-    private String brand;
-
-    private String model;
-
-    private String appName;
-
-    private String appVersion;
-
+    @Singular
+    private List<InAppMessage> messages;
 }

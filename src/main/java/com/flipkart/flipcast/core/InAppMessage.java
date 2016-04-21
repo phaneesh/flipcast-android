@@ -17,6 +17,8 @@
 
 package com.flipkart.flipcast.core;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,24 +31,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(suppressConstructorProperties = true)
 @NoArgsConstructor
 @Builder
-public class DeviceData {
+public class InAppMessage {
+
+    private String id;
 
     private String configName;
 
+    private String priority;
+
     private String deviceId;
 
-    private String cloudMessagingId;
+    private String messageType;
 
-    private String osName = "ANDROID";
+    public String message;
 
-    private String osVersion;
+    public List<String> tags;
 
-    private String brand;
+    public long ttl;
 
-    private String model;
+    public String status;
 
-    private String appName;
-
-    private String appVersion;
-
+    public long created;
 }

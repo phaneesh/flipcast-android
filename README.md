@@ -5,6 +5,8 @@ Allows easier integration into Flipcast service.
 ## Features:
 * Registering a device with the service
 * Unregistering a device with the service
+* Fetch in app messages (by type & priority)
+* Acknowledge the in app message
 
 ## Dependencies
 * retrofit
@@ -25,7 +27,7 @@ repositories {
 Add the dependency
 
 ```
-compile 'com.flipkart.flipcast:flipcast-android:1.0'
+compile 'com.flipkart.flipcast:flipcast-android:1.1'
 ```
 
 ### Sample code
