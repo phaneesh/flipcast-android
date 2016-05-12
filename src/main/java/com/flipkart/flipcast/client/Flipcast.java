@@ -55,7 +55,7 @@ public class Flipcast {
 
     private FlipcastAuthenticationProvider authenticationProvider = null;
 
-    @Builder(builderMethodName = "defaultClient")
+    @Builder(builderMethodName = "createDefault", builderClassName = "CreateDefaultBuilder")
     public Flipcast(final FlipcastConfig config) {
         this.config = config;
         this.okHttpClient = new OkHttpClient.Builder()
@@ -83,7 +83,7 @@ public class Flipcast {
         flipcastHttpClient = retrofit.create(FlipcastHttpClient.class);
     }
 
-    @Builder(builderMethodName = "from")
+    @Builder(builderMethodName = "custom", builderClassName = "CustomBuilder")
     public Flipcast(OkHttpClient okHttpClient, FlipcastConfig config, Gson gson, FlipcastAuthenticationProvider authenticationProvider) {
         this.config = config;
         this.okHttpClient = okHttpClient;

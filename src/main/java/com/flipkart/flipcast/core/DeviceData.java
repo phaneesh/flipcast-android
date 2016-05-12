@@ -17,6 +17,8 @@
 
 package com.flipkart.flipcast.core;
 
+import android.os.Build;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,10 +28,12 @@ import lombok.NoArgsConstructor;
  * @author phaneesh
  */
 @Data
-@AllArgsConstructor(suppressConstructorProperties = true)
-@NoArgsConstructor
-@Builder
 public class DeviceData {
+
+    //Hide the default constructor
+    private DeviceData() {
+
+    }
 
     private String configName;
 
@@ -49,4 +53,16 @@ public class DeviceData {
 
     private String appVersion;
 
+    @Builder
+    public DeviceData(String configName, String deviceId, String cloudMessagingId, String appName, String appVersion) {
+        this.configName = configName;
+        this.deviceId = deviceId;
+        this.cloudMessagingId = cloudMessagingId;
+        this.osName = "ANDROID";
+        this.osVersion = Build.VERSION.RELEASE;
+        this.brand = Build.BRAND;
+        this.model = Build.MODEL;
+        this.appName = appName;
+        this.appVersion = appVersion;
+    }
 }

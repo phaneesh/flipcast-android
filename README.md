@@ -38,7 +38,7 @@ FlipcastConfig config = FlipcastConfig.builder()
     .endpoint("/mobile/api")
     .secured(false)
     .build();
-Flipcast flipcast = Flipcast.defaultClient()
+Flipcast flipcast = Flipcast.default()
     .config(config)
     .build();
 
