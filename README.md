@@ -19,7 +19,7 @@ Add the following repository to your build.gradle
 ```
 repositories {
     maven {
-        url 'https://dl.bintray.com/phaneesh/maven/'
+        url  "http://jcenter.bintray.com" 
     }
 }
 ```
@@ -27,7 +27,7 @@ repositories {
 Add the dependency
 
 ```
-compile 'com.flipkart.flipcast:flipcast-android:1.1'
+compile 'com.flipkart.flipcast:flipcast-android:1.4'
 ```
 
 ### Sample code

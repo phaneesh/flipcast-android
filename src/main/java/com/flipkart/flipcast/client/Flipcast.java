@@ -97,15 +97,15 @@ public class Flipcast {
      * @param request
      * @param callback
      */
-    public void register(DeviceData request, final Callback<Response<DeviceData>> callback) {
-        Call<Response<DeviceData>> call = authenticationProvider ==  null ?
+    public void register(DeviceData request, final Callback<DeviceData> callback) {
+        Call<DeviceData> call = authenticationProvider ==  null ?
                 flipcastHttpClient.register(request.getConfigName(), request.getDeviceId(), request) :
                 flipcastHttpClient.register(String.format("%s %s", authenticationProvider.prefix(),
                         authenticationProvider. token()), request.getConfigName(),
                         request.getDeviceId(), request);
-        call.enqueue(new Callback<Response<DeviceData>>() {
+        call.enqueue(new Callback<DeviceData>() {
             @Override
-            public void onResponse(Call<Response<DeviceData>> call, Response<Response<DeviceData>> response) {
+            public void onResponse(Call<DeviceData> call, Response<DeviceData> response) {
                 Log.i("flipcast", "Device registered successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -113,7 +113,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<DeviceData>> call, Throwable t) {
+            public void onFailure(Call<DeviceData> call, Throwable t) {
                 Log.e("flipcast", "Error registering device: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);
@@ -156,12 +156,12 @@ public class Flipcast {
      * @param id
      * @param callback
      */
-    public void count(String config, String id, final Callback<Response<MessageCountResponse>> callback) {
-        Call<Response<MessageCountResponse>> call = authenticationProvider ==  null ? flipcastHttpClient.count(config, id) : flipcastHttpClient.countAuth(String.format("%s %s", authenticationProvider.prefix(),
+    public void count(String config, String id, final Callback<MessageCountResponse> callback) {
+        Call<MessageCountResponse> call = authenticationProvider ==  null ? flipcastHttpClient.count(config, id) : flipcastHttpClient.countAuth(String.format("%s %s", authenticationProvider.prefix(),
                 authenticationProvider. token()), config, id);
-        call.enqueue(new Callback<Response<MessageCountResponse>>() {
+        call.enqueue(new Callback<MessageCountResponse>() {
             @Override
-            public void onResponse(Call<Response<MessageCountResponse>> call, Response<Response<MessageCountResponse>> response) {
+            public void onResponse(Call<MessageCountResponse> call, Response<MessageCountResponse> response) {
                 Log.i("flipcast", "Message count fetched successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -169,7 +169,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<MessageCountResponse>> call, Throwable t) {
+            public void onFailure(Call<MessageCountResponse> call, Throwable t) {
                 Log.e("flipcast", "Error fetching message count: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);
@@ -185,12 +185,12 @@ public class Flipcast {
      * @param messageType
      * @param callback
      */
-    public void count(String config, String id, String messageType, final Callback<Response<MessageCountResponse>> callback) {
-        Call<Response<MessageCountResponse>> call = authenticationProvider ==  null ? flipcastHttpClient.count(config, id, messageType) : flipcastHttpClient.countAuth(String.format("%s %s", authenticationProvider.prefix(),
+    public void count(String config, String id, String messageType, final Callback<MessageCountResponse> callback) {
+        Call<MessageCountResponse> call = authenticationProvider ==  null ? flipcastHttpClient.count(config, id, messageType) : flipcastHttpClient.countAuth(String.format("%s %s", authenticationProvider.prefix(),
                 authenticationProvider. token()), config, id, messageType);
-        call.enqueue(new Callback<Response<MessageCountResponse>>() {
+        call.enqueue(new Callback<MessageCountResponse>() {
             @Override
-            public void onResponse(Call<Response<MessageCountResponse>> call, Response<Response<MessageCountResponse>> response) {
+            public void onResponse(Call<MessageCountResponse> call, Response<MessageCountResponse> response) {
                 Log.i("flipcast", "Message count fetched successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -198,7 +198,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<MessageCountResponse>> call, Throwable t) {
+            public void onFailure(Call<MessageCountResponse> call, Throwable t) {
                 Log.e("flipcast", "Error fetching message count: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);
@@ -214,12 +214,12 @@ public class Flipcast {
      * @param messageType
      * @param callback
      */
-    public void count(String config, String id, String messageType, String priority, final Callback<Response<MessageCountResponse>> callback) {
-        Call<Response<MessageCountResponse>> call = authenticationProvider ==  null ? flipcastHttpClient.count(config, id, messageType, priority) : flipcastHttpClient.countAuth(String.format("%s %s", authenticationProvider.prefix(),
+    public void count(String config, String id, String messageType, String priority, final Callback<MessageCountResponse> callback) {
+        Call<MessageCountResponse> call = authenticationProvider ==  null ? flipcastHttpClient.count(config, id, messageType, priority) : flipcastHttpClient.countAuth(String.format("%s %s", authenticationProvider.prefix(),
                 authenticationProvider. token()), config, id, messageType, priority);
-        call.enqueue(new Callback<Response<MessageCountResponse>>() {
+        call.enqueue(new Callback<MessageCountResponse>() {
             @Override
-            public void onResponse(Call<Response<MessageCountResponse>> call, Response<Response<MessageCountResponse>> response) {
+            public void onResponse(Call<MessageCountResponse> call, Response<MessageCountResponse> response) {
                 Log.i("flipcast", "Message count fetched successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -227,7 +227,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<MessageCountResponse>> call, Throwable t) {
+            public void onFailure(Call<MessageCountResponse> call, Throwable t) {
                 Log.e("flipcast", "Error fetching message count: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);
@@ -242,12 +242,12 @@ public class Flipcast {
      * @param id
      * @param callback
      */
-    public void messages(String config, String id, final Callback<Response<MessagesResponse>> callback) {
-        Call<Response<MessagesResponse>> call = authenticationProvider ==  null ? flipcastHttpClient.messages(config, id) : flipcastHttpClient.messagesAuth(String.format("%s %s", authenticationProvider.prefix(),
+    public void messages(String config, String id, final Callback<MessagesResponse> callback) {
+        Call<MessagesResponse> call = authenticationProvider ==  null ? flipcastHttpClient.messages(config, id) : flipcastHttpClient.messagesAuth(String.format("%s %s", authenticationProvider.prefix(),
                 authenticationProvider. token()), config, id);
-        call.enqueue(new Callback<Response<MessagesResponse>>() {
+        call.enqueue(new Callback<MessagesResponse>() {
             @Override
-            public void onResponse(Call<Response<MessagesResponse>> call, Response<Response<MessagesResponse>> response) {
+            public void onResponse(Call<MessagesResponse> call, Response<MessagesResponse> response) {
                 Log.i("flipcast", "Messages fetched successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -255,7 +255,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<MessagesResponse>> call, Throwable t) {
+            public void onFailure(Call<MessagesResponse> call, Throwable t) {
                 Log.e("flipcast", "Error fetching messages: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);
@@ -271,12 +271,12 @@ public class Flipcast {
      * @param messageType
      * @param callback
      */
-    public void messages(String config, String id, String messageType, final Callback<Response<MessagesResponse>> callback) {
-        Call<Response<MessagesResponse>> call = authenticationProvider ==  null ? flipcastHttpClient.messages(config, id, messageType) : flipcastHttpClient.messagesAuth(String.format("%s %s", authenticationProvider.prefix(),
+    public void messages(String config, String id, String messageType, final Callback<MessagesResponse> callback) {
+        Call<MessagesResponse> call = authenticationProvider ==  null ? flipcastHttpClient.messages(config, id, messageType) : flipcastHttpClient.messagesAuth(String.format("%s %s", authenticationProvider.prefix(),
                 authenticationProvider. token()), config, id, messageType);
-        call.enqueue(new Callback<Response<MessagesResponse>>() {
+        call.enqueue(new Callback<MessagesResponse>() {
             @Override
-            public void onResponse(Call<Response<MessagesResponse>> call, Response<Response<MessagesResponse>> response) {
+            public void onResponse(Call<MessagesResponse> call, Response<MessagesResponse> response) {
                 Log.i("flipcast", "Messages fetched successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -284,7 +284,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<MessagesResponse>> call, Throwable t) {
+            public void onFailure(Call<MessagesResponse> call, Throwable t) {
                 Log.e("flipcast", "Error fetching messages: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);
@@ -300,12 +300,12 @@ public class Flipcast {
      * @param messageType
      * @param callback
      */
-    public void messages(String config, String id, String messageType, String priority, final Callback<Response<MessagesResponse>> callback) {
-        Call<Response<MessagesResponse>> call = authenticationProvider ==  null ? flipcastHttpClient.messages(config, id, messageType, priority) : flipcastHttpClient.messagesAuth(String.format("%s %s", authenticationProvider.prefix(),
+    public void messages(String config, String id, String messageType, String priority, final Callback<MessagesResponse> callback) {
+        Call<MessagesResponse> call = authenticationProvider ==  null ? flipcastHttpClient.messages(config, id, messageType, priority) : flipcastHttpClient.messagesAuth(String.format("%s %s", authenticationProvider.prefix(),
                 authenticationProvider. token()), config, id, messageType, priority);
-        call.enqueue(new Callback<Response<MessagesResponse>>() {
+        call.enqueue(new Callback<MessagesResponse>() {
             @Override
-            public void onResponse(Call<Response<MessagesResponse>> call, Response<Response<MessagesResponse>> response) {
+            public void onResponse(Call<MessagesResponse> call, Response<MessagesResponse> response) {
                 Log.i("flipcast", "Message count fetched successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -313,7 +313,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<MessagesResponse>> call, Throwable t) {
+            public void onFailure(Call<MessagesResponse> call, Throwable t) {
                 Log.e("flipcast", "Error fetching messages: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);
@@ -322,12 +322,12 @@ public class Flipcast {
         });
     }
 
-    public void ack(String config, String id, final Callback<Response<MessageAckResponse>> callback) {
-        Call<Response<MessageAckResponse>> call = authenticationProvider ==  null ? flipcastHttpClient.ack(config, id) : flipcastHttpClient.ack(String.format("%s %s", authenticationProvider.prefix(),
+    public void ack(String config, String id, final Callback<MessageAckResponse> callback) {
+        Call<MessageAckResponse> call = authenticationProvider ==  null ? flipcastHttpClient.ack(config, id) : flipcastHttpClient.ack(String.format("%s %s", authenticationProvider.prefix(),
                 authenticationProvider. token()), config, id);
-        call.enqueue(new Callback<Response<MessageAckResponse>>() {
+        call.enqueue(new Callback<MessageAckResponse>() {
             @Override
-            public void onResponse(Call<Response<MessageAckResponse>> call, Response<Response<MessageAckResponse>> response) {
+            public void onResponse(Call<MessageAckResponse> call, Response<MessageAckResponse> response) {
                 Log.i("flipcast", "Message count fetched successfully: " +response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
@@ -335,7 +335,7 @@ public class Flipcast {
             }
 
             @Override
-            public void onFailure(Call<Response<MessageAckResponse>> call, Throwable t) {
+            public void onFailure(Call<MessageAckResponse> call, Throwable t) {
                 Log.e("flipcast", "Error fetching messages: " +t.getMessage());
                 if (callback != null) {
                     callback.onFailure(call, t);

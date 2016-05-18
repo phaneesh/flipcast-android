@@ -37,10 +37,10 @@ import retrofit2.http.Path;
 public interface FlipcastHttpClient {
 
     @POST("flipcast/device/{config}/deviceId/{id}")
-    Call<Response<DeviceData>> register(@Path("config") String config, @Path("id") String id, @Body DeviceData registerRequest);
+    Call<DeviceData> register(@Path("config") String config, @Path("id") String id, @Body DeviceData registerRequest);
 
     @POST("flipcast/device/{config}/deviceId/{id}")
-    Call<Response<DeviceData>> register(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Body DeviceData registerRequest);
+    Call<DeviceData> register(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Body DeviceData registerRequest);
 
     @DELETE("flipcast/device/{config}/deviceId/{id}")
     Call<Response> unregister(@Path("config") String config, @Path("id") String id);
@@ -49,46 +49,46 @@ public interface FlipcastHttpClient {
     Call<Response> unregister(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id);
 
     @GET("flipcast/inapp/message/count/{config}/{id}")
-    Call<Response<MessageCountResponse>> count(@Path("config") String config, @Path("id") String id);
+    Call<MessageCountResponse> count(@Path("config") String config, @Path("id") String id);
 
     @GET("flipcast/inapp/message/count/{config}/{id}")
-    Call<Response<MessageCountResponse>> countAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id);
+    Call<MessageCountResponse> countAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id);
 
     @GET("flipcast/inapp/message/count/{config}/{id}/{messageType}")
-    Call<Response<MessageCountResponse>> count(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
+    Call<MessageCountResponse> count(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
 
     @GET("flipcast/inapp/message/count/{config}/{id}/{messageType}")
-    Call<Response<MessageCountResponse>> countAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
+    Call<MessageCountResponse> countAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
 
     @GET("flipcast/inapp/message/count/{config}/{id}/{messageType}/{priority}")
-    Call<Response<MessageCountResponse>> count(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
+    Call<MessageCountResponse> count(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
 
     @GET("flipcast/inapp/message/count/{config}/{id}/{messageType}/{priority}")
-    Call<Response<MessageCountResponse>> countAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
+    Call<MessageCountResponse> countAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
 
 
     @GET("flipcast/inapp/messages/{config}/{id}")
-    Call<Response<MessagesResponse>> messages(@Path("config") String config, @Path("id") String id);
+    Call<MessagesResponse> messages(@Path("config") String config, @Path("id") String id);
 
     @GET("flipcast/inapp/messages/{config}/{id}")
-    Call<Response<MessagesResponse>> messagesAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id);
+    Call<MessagesResponse> messagesAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id);
 
     @GET("flipcast/inapp/messages/{config}/{id}/{messageType}")
-    Call<Response<MessagesResponse>> messages(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
+    Call<MessagesResponse> messages(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
 
     @GET("flipcast/inapp/messages/{config}/{id}/{messageType}")
-    Call<Response<MessagesResponse>> messagesAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
+    Call<MessagesResponse> messagesAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType);
 
     @GET("flipcast/inapp/messages/{config}/{id}/{messageType}/{priority}")
-    Call<Response<MessagesResponse>> messages(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
+    Call<MessagesResponse> messages(@Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
 
     @GET("flipcast/inapp/messages/{config}/{id}/{messageType}/{priority}")
-    Call<Response<MessagesResponse>> messagesAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
+    Call<MessagesResponse> messagesAuth(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id, @Path("messageType") String messageType, @Path("priority") String priority);
 
     @POST("flipcast/inapp/messages/ack/{config}/{id}")
-    Call<Response<MessageAckResponse>> ack(@Path("config") String config, @Path("id") String id);
+    Call<MessageAckResponse> ack(@Path("config") String config, @Path("id") String id);
 
     @POST("flipcast/inapp/messages/ack/{config}/{id}")
-    Call<Response<MessageAckResponse>> ack(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id);
+    Call<MessageAckResponse> ack(@Header("Authorization") String authToken, @Path("config") String config, @Path("id") String id);
 
 }
