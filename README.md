@@ -56,6 +56,10 @@ DeviceData data = DeviceData.builder()
 flipcast.register(data, null);
 ```
 
+Contributors
+------------
+* [Pandeshwar](https://github.com/infinitec123)
+
 LICENSE
 -------
 
