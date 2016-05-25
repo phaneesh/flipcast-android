@@ -338,7 +338,7 @@ public class Flipcast {
         call.enqueue(new Callback<MessageAckResponse>() {
             @Override
             public void onResponse(Call<MessageAckResponse> call, Response<MessageAckResponse> response) {
-                Log.i("flipcast", "Message count fetched successfully: " + response.body());
+                Log.i("flipcast", "Message acknowledged successfully: " + response.body());
                 if (callback != null) {
                     callback.onResponse(call, response);
                 }

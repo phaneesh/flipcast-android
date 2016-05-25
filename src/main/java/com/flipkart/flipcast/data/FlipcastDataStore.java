@@ -34,7 +34,7 @@ public class FlipcastDataStore extends SQLiteOpenHelper implements DataStoreCont
 
     private static final String TAG = "FlipcastDataStore";
     private static final String DB_NAME = "flipcast.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
     private SQLiteDatabase writableDatabase;
 
 

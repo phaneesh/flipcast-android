@@ -129,8 +129,8 @@ public class FlipcastDataProvider extends ContentProvider {
     }
 
     @Override
-    public int update(@NonNull Uri uri, ContentValues contentValues, String s, String[] strings) {
-        return 0;
+    public int update(@NonNull Uri uri, ContentValues contentValues, String where, String[] whereArgs) {
+        return handleUpdateOperation(uri, contentValues, where, whereArgs);
     }
 
     //*********************************************************************
@@ -181,7 +181,7 @@ public class FlipcastDataProvider extends ContentProvider {
             mContext.getContentResolver().notifyChange(uri, null);
         }
 
-        Log.v(TAG, "Inserted at row with id=" + rowId);
+        //Log.i(TAG, "Inserted at row with id=" + rowId);
         return uri.buildUpon().appendPath(String.valueOf(rowId)).build();
     }
 
@@ -227,6 +227,22 @@ public class FlipcastDataProvider extends ContentProvider {
         String[] args = new String[]{Integer.toString(count)};
         int deleteCount = mFlipcastDataStore.delete(TableInAppMessages.NAME, where, args);
         Log.i(TAG, "Trimmed the table. Deleted " + deleteCount + " rows.");
+    }
+
+
+    /**
+     * Helper method to handle updating an InAppMessage data.
+     *
+     * @param uri
+     * @param contentValues
+     * @param where
+     * @param whereArgs
+     * @return
+     */
+    private int handleUpdateOperation(Uri uri, ContentValues contentValues, String where, String[] whereArgs) {
+        int updateResult = mFlipcastDataStore.update(TableInAppMessages.NAME, contentValues, where, whereArgs);
+        Log.i(TAG, "Update result: " + updateResult);
+        return updateResult;
     }
 
     //*********************************************************************

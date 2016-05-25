@@ -67,7 +67,7 @@ public class CacheUtils {
      * But the DB is limited to 'n' rows which can be got using this function.
      */
     public int getInAppCacheLimit() {
-        return mSharedPreferences.getInt(sCacheLimit, 2);
+        return mSharedPreferences.getInt(sCacheLimit, -1);
     }
 
     //*********************************************************************
