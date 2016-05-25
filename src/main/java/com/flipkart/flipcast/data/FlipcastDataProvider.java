@@ -34,7 +34,7 @@ import com.flipkart.flipcast.core.InAppMessage;
 /**
  * Provider that gives access to cached {@linkplain InAppMessage} through standard {@link ContentProvider} mechanism.
  * Note: This being a library project, this content provider cannot be registered independently in manifest.
- * <p/>
+ * <p></p>
  * So it is the work of Application to call the constructor with right authority. Use {@link FlipcastUriGenerator}
  * to form URIs for the supported operations.
  *

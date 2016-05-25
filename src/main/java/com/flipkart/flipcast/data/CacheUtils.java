@@ -24,7 +24,7 @@ import android.preference.PreferenceManager;
 /**
  * @author Sharath Pandeshwar
  * @since 19/05/2016
- * <p/>
+ * <p></p>
  * Class to 'memorize' certain details shared preferences
  */
 public class CacheUtils {
