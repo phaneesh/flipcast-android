@@ -50,18 +50,25 @@ public class TableInAppMessages {
     public static final String COLUMN_MESSAGE = "message";
     public static final String COLUMN_TAGS = "tags";
     public static final String COLUMN_STATUS = "status";
+    public static final String COLUMN_READ_STATUS = "read_status";
 
     public static final String COLUMN_TTL = "ttl";
     public static final String COLUMN_CREATED = "created";
 
     public static void create(final SQLiteDatabase db) {
 
-        final String columnDef = TextUtils.join(SQLConstants.COMMA, new String[]{String.format(Locale.US, SQLConstants.DATA_INTEGER_PK, BaseColumns._ID),
-                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_ID, ""), String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_CONFIG_NAME, ""),
-                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_PRIORITY, ""), String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_DEVICE_ID, "")
-                , String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_MESSAGE_TYPE, ""), String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_MESSAGE,
-                ""), String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_TAGS, ""), String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_STATUS, ""),
-                String.format(Locale.US, SQLConstants.DATA_INTEGER, COLUMN_TTL, 0), String.format(Locale.US, SQLConstants.DATA_INTEGER, COLUMN_CREATED, 0)});
+        final String columnDef = TextUtils.join(SQLConstants.COMMA, new String[]{
+                String.format(Locale.US, SQLConstants.DATA_INTEGER_PK, BaseColumns._ID),
+                String.format(Locale.US, SQLConstants.DATA_TEXT_UNIQUE_NOT_NULL, COLUMN_ID),
+                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_CONFIG_NAME, ""),
+                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_PRIORITY, ""),
+                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_DEVICE_ID, ""),
+                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_MESSAGE_TYPE, ""),
+                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_MESSAGE, ""),
+                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_TAGS, ""),
+                String.format(Locale.US, SQLConstants.DATA_TEXT, COLUMN_STATUS, ""),
+                String.format(Locale.US, SQLConstants.DATA_INTEGER, COLUMN_TTL, 0),
+                String.format(Locale.US, SQLConstants.DATA_INTEGER, COLUMN_CREATED, 0)});
 
         Log.d(TAG, "Column Def:" + columnDef);
         db.execSQL(String.format(Locale.US, SQLConstants.CREATE_TABLE, NAME, columnDef));
@@ -151,13 +158,14 @@ public class TableInAppMessages {
 
 
     private interface SQLConstants {
-        public static final String CREATE_TABLE           = "CREATE TABLE IF NOT EXISTS %s (%s);";
-        public static final String DATA_TEXT              = "%s TEXT DEFAULT '%s' ";
-        public static final String DATA_INTEGER           = "%s INTEGER DEFAULT %d ";
-        public static final String DATA_INTEGER_PK        = "%s INTEGER PRIMARY KEY AUTOINCREMENT ";
-        public static final String AND                    = " AND ";
-        public static final String OR                     = " OR ";
-        public static final String COMMA                  = ",";
+        public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS %s (%s);";
+        public static final String DATA_TEXT = "%s TEXT DEFAULT '%s' ";
+        public static final String DATA_TEXT_UNIQUE_NOT_NULL = "%s TEXT NOT NULL UNIQUE";
+        public static final String DATA_INTEGER = "%s INTEGER DEFAULT %d ";
+        public static final String DATA_INTEGER_PK = "%s INTEGER PRIMARY KEY AUTOINCREMENT ";
+        public static final String AND = " AND ";
+        public static final String OR = " OR ";
+        public static final String COMMA = ",";
     }
 
 

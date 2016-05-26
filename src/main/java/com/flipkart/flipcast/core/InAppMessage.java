@@ -33,6 +33,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class InAppMessage {
 
+    public final static String STATUS_NEW = "NEW";
+    public final static String STATUS_READ = "READ";
+
     private String id;
 
     private String configName;
