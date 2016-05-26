@@ -143,7 +143,8 @@ public class FlipcastDataProvider extends ContentProvider {
      * @return Cursor
      */
     private Cursor fetchAllInAppMessages() {
-        Cursor cursor = mFlipcastDataStore.query(TableInAppMessages.NAME, null, null, null, null, null, null);
+        String orderBy = TableInAppMessages.COLUMN_CREATED + " DESC";
+        Cursor cursor = mFlipcastDataStore.query(TableInAppMessages.NAME, null, null, null, null, null, orderBy);
         printInAppMessage(cursor);
         return cursor;
     }
