@@ -18,7 +18,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.flipkart.flipcast'
-version = '1.5'
+version = '1.5.1'
 
 android {
     compileSdkVersion 23
@@ -59,7 +59,7 @@ ext {
     siteUrl = 'https://github.com/phaneesh/flipcast-android'
     gitUrl = 'https://github.com/phaneesh/flipcast-android.git'
 
-    libraryVersion = '1.5'
+    libraryVersion = '1.5.1'
 
     developerId = 'phaneesh'
     developerName = 'Phaneesh Nagaraja'
