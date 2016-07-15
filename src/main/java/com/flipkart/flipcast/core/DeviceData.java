@@ -19,10 +19,10 @@ package com.flipkart.flipcast.core;
 
 import android.os.Build;
 
-import lombok.AllArgsConstructor;
+import com.google.gson.annotations.SerializedName;
+
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author phaneesh
@@ -35,22 +35,31 @@ public class DeviceData {
 
     }
 
+    @SerializedName("configName")
     private String configName;
 
+    @SerializedName("deviceId")
     private String deviceId;
 
+    @SerializedName("cloudMessagingId")
     private String cloudMessagingId;
 
+    @SerializedName("osName")
     private String osName = "ANDROID";
 
+    @SerializedName("osVersion")
     private String osVersion;
 
+    @SerializedName("brand")
     private String brand;
 
+    @SerializedName("model")
     private String model;
 
+    @SerializedName("appName")
     private String appName;
 
+    @SerializedName("appVersion")
     private String appVersion;
 
     @Builder

@@ -17,6 +17,8 @@
 
 package com.flipkart.flipcast.core;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -34,8 +36,10 @@ import lombok.Singular;
 @Builder
 public class MessagesResponse {
 
+    @SerializedName("count")
     private long count;
 
+    @SerializedName("messages")
     @Singular
     private List<InAppMessage> messages;
 }

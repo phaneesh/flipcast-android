@@ -17,6 +17,8 @@
 
 package com.flipkart.flipcast.core;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -36,23 +38,33 @@ public class InAppMessage {
     public final static String STATUS_NEW = "NEW";
     public final static String STATUS_READ = "READ";
 
+    @SerializedName("id")
     private String id;
 
+    @SerializedName("configName")
     private String configName;
 
+    @SerializedName("priority")
     private String priority;
 
+    @SerializedName("deviceId")
     private String deviceId;
 
+    @SerializedName("messageType")
     private String messageType;
 
+    @SerializedName("message")
     public String message;
 
+    @SerializedName("tags")
     public List<String> tags;
 
+    @SerializedName("ttl")
     public long ttl;
 
+    @SerializedName("status")
     public String status;
 
+    @SerializedName("created")
     public long created;
 }

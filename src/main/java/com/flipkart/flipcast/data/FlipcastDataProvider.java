@@ -124,6 +124,9 @@ public class FlipcastDataProvider extends ContentProvider {
         switch (mUriMatcher.match(uri)) {
             case CODE_ALL_MESSAGES:
                 return clearAllInAppMessages();
+
+            case CODE_SINGLE_MESSAGE:
+                return deleteSingleInAppMessage(uri);
         }
         return 0;
     }
@@ -244,6 +247,22 @@ public class FlipcastDataProvider extends ContentProvider {
         int updateResult = mFlipcastDataStore.update(TableInAppMessages.NAME, contentValues, where, whereArgs);
         Log.i(TAG, "Update result: " + updateResult);
         return updateResult;
+    }
+
+
+    /**
+     * Handles deleting a single inApp message
+     *
+     * @param uri Uri carrying 'id' of the row
+     * @return Cursor
+     */
+    private int deleteSingleInAppMessage(@NonNull Uri uri) {
+        String id = uri.getQueryParameter(QUERY_PARAM_ID);
+        String table = TableInAppMessages.NAME;
+        String where = TableInAppMessages.COLUMN_ID + "=?";
+        String[] args = new String[]{id};
+
+        return mFlipcastDataStore.delete(table, where, args);
     }
 
     //*********************************************************************
