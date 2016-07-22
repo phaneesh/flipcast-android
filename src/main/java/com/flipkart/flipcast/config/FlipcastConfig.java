@@ -17,7 +17,6 @@
 
 package com.flipkart.flipcast.config;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,13 +26,11 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor(suppressConstructorProperties = true)
-@Builder
 public class FlipcastConfig {
 
     private String host;
 
-    private int port;
+    private int port = 0;
 
     private String endpoint;
 
@@ -42,4 +39,30 @@ public class FlipcastConfig {
     private int connectionTimeout = 5000;
 
     private int requestTimeout = 5000;
+
+    @Builder
+    public FlipcastConfig(String host, int port, String endpoint, boolean secured, int connectionTimeout, int requestTimeout) {
+        this.host = host;
+        if(port == 0) {
+            if(secured) {
+                this.port = 443;
+            } else {
+                this.port = 80;
+            }
+        } else {
+            this.port = port;
+        }
+        this.endpoint = endpoint;
+        this.secured = secured;
+        if(connectionTimeout == 0) {
+            this.connectionTimeout = 5000;
+        } else {
+            this.connectionTimeout = connectionTimeout;
+        }
+        if(requestTimeout == 0) {
+            this.requestTimeout = 5000;
+        } else {
+            this.requestTimeout = requestTimeout;
+        }
+    }
 }
