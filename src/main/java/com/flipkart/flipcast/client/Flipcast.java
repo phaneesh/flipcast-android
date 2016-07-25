@@ -29,6 +29,7 @@ import com.flipkart.flipcast.data.CacheUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import lombok.Builder;
@@ -70,7 +71,13 @@ public class Flipcast {
     }
 
     private void setupBaseUrl() {
-        baseUrl = String.format("%s://%s:%d/%s", config.isSecured() ? "https" : "http", config.getHost(), config.getPort(), config.getEndpoint());
+        String scheme;
+        if (config.isSecured()) {
+            scheme = "https";
+        } else {
+            scheme = "http";
+        }
+        baseUrl = scheme + "://" + config.getHost() + ":" + config.getPort() + "/" + config.getEndpoint();
     }
 
     private void setupClient(Gson gson) {
@@ -125,8 +132,8 @@ public class Flipcast {
      * @param callback
      */
     public void unregister(String config, String id, final Callback<Response> callback) {
-        Call<Response> call = authenticationProvider == null ? flipcastHttpClient.unregister(config, id) : flipcastHttpClient.unregister(String.format("%s " +
-                "%s", authenticationProvider
+        Call<Response> call = authenticationProvider == null ? flipcastHttpClient.unregister(config, id) : flipcastHttpClient.unregister(String.format("%s "
+                + "%s", authenticationProvider
                 .prefix(), authenticationProvider.token()), config, id);
         call.enqueue(new Callback<Response>() {
             @Override
